@@ -1,12 +1,7 @@
 import requests as r
 import hashlib
 import time
-
-
-def encryption_md5(s):
-    encryption = hashlib.md5()
-    encryption.update(s.encode('utf-8'))
-    return encryption.hexdigest()
+from encrypt.encrypt_md5 import encryption_md5 as m5
 
 
 def get_sign(param):
@@ -17,7 +12,7 @@ def get_sign(param):
 		p += m
 	r = '6C57AB91A1308E26B797F4CD382AC79D'
 	f = param['method'] + p + r
-	return encryption_md5(f).upper()
+	return m5(f).upper()
 
 def f():
 	t = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time()))

@@ -1,13 +1,7 @@
 import requests as r
 import time
-import hashlib
+from encrypt.encrypt_md5 import encryption_md5 as m5
 import execjs
-
-
-def encryption_md5(s):
-    encryption = hashlib.md5()
-    encryption.update(s.encode('utf-8'))
-    return encryption.hexdigest()
 
 
 def f1(page):
@@ -15,7 +9,7 @@ def f1(page):
 	page = page
 	num = 15
 	t = int(time.time())
-	token = encryption_md5('{}{}{}'.format(page, num, t))
+	token = m5('{}{}{}'.format(page, num, t))
 	param = {
 		'page': page,
 		'num': num,

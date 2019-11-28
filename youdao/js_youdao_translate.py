@@ -1,14 +1,9 @@
 # -*- coding:utf-8 -*-
 import time
 import random
-import hashlib
+from encrypt.encrypt_md5 import encryption_md5 as m5
 import requests
 
-
-def encryption_md5(s):
-    encryption = hashlib.md5()
-    encryption.update(s.encode('utf-8'))
-    return encryption.hexdigest()
 
 def youdao_translate(query):
     url = 'http://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule'
@@ -27,8 +22,8 @@ def youdao_translate(query):
 
     salt = str(int(time.time() * 1000) + random.randint(0, 10))
     ts = salt[:-1]
-    bv = encryption_md5(headers['User-Agent'].split('Mozilla/')[1])
-    sign = encryption_md5("fanyideskweb{}{}n%A-rKaT5fb[Gy?;N5@Tj".format(query, salt))
+    bv = m5(headers['User-Agent'].split('Mozilla/')[1])
+    sign = m5("fanyideskweb{}{}n%A-rKaT5fb[Gy?;N5@Tj".format(query, salt))
 
     data = {
         'i': query,
