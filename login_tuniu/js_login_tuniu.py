@@ -49,4 +49,3 @@ def login(username, password):
     print(html)
     print(html.cookies)
 
-login('17612472355', 'lishuo4322')

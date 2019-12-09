@@ -47,4 +47,3 @@ def get_pwd(username, password):
     print(html)
     print(html.text)
 
-get_pwd('17612472355', 'lishuo4322')

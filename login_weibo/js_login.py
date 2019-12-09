@@ -58,7 +58,7 @@ def weibo_login(username, password, servertime, nonce, rsakv, prelt):
     print(result)
     print(result.text)
 
-def get_data():
+def get_data(username, password):
     url = 'https://login.sina.com.cn/sso/prelogin.php?entry=weibo&callback=sinaSSOController.preloginCallBack&su=&rsakt=mod&client=ssologin.js(v1.4.19)&_={}'.format(int(time.time()))
     headers = {
         'Referer': 'https://weibo.com/',
@@ -67,6 +67,9 @@ def get_data():
     }
     html = r.get(url, headers=headers)
     html = json.loads(''.join(re.findall('{.*}', html.text)))
-    weibo_login('17612472355', 'lishuo4322', html['servertime'], html['nonce'], html['rsakv'], html['exectime'])
+    weibo_login(username, password, html['servertime'], html['nonce'], html['rsakv'], html['exectime'])
 
-get_data()
+
+username = ''
+password = ''
+get_data(username, password)

@@ -15,4 +15,3 @@ def f(username, password):
 	print(html)
 	print(html.text)
 
-f('17612472355', 'LI_shuo4322')
