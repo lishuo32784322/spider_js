@@ -32,4 +32,3 @@ def login(username, pwd):
     html = r.post(url=url, headers=headers, data=data)
     print(html)
     print(html.text)
-
