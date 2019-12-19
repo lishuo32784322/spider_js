@@ -39,4 +39,3 @@ def login(username, password):
     print(html)
     print(html.text)
 
-login('17612472355', 'lishuo4322')
