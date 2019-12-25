@@ -65,3 +65,5 @@ def get_info():
 
 
 get_info()
+uuid = ''.join([random.choice('0123456789abcdef') for _ in range(20)]) + '.' + str(int(time.time())) + '.1.0.0'
+print(uuid)
