@@ -7,6 +7,7 @@ import execjs
 import hashlib
 import requests as r
 from lxml import etree
+from tesserocr_code.verify_code import get_code as verify_code
 
 
 def get_pwd(pwd):
@@ -43,6 +44,8 @@ def login(username, password):
             f.write(code.content)
 
     get_code(rs)
+    code = verify_code('code.jpg')
+    print(code)
     url = 'https://www.fangjia.com/user/userLogin'
     headers = {
         'Host': 'www.fangjia.com',
@@ -55,11 +58,10 @@ def login(username, password):
     }
     data = {
         'username': username,
-        'code': input('code:'),
+        'code': code,
         'pass': _pass,
         'codeToken': codeToken,
     }
     html = rs.post(url=url, headers=headers, data=data)
     print(html)
     print(html.text)
-
