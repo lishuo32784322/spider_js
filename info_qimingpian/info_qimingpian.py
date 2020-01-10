@@ -20,6 +20,6 @@ def get_info():
     headers = {'Accept': 'application/json, text/plain, */*', 'Content-Type': 'application/x-www-form-urlencoded', 'Origin': 'https://www.qimingpian.cn', 'Sec-Fetch-Mode': 'cors', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36'}
     data = {'time_interval': '', 'tag': '', 'tag_type': '', 'province': '', 'lunci': '', 'page': '1', 'num': '20', 'unionid': ''}
     html = r.post(url=url, headers=headers, data=data)
-    print(decode_info(html.json().get('encrypt_data')).get('list'))
+    print(json.dumps(decode_info(html.json().get('encrypt_data')).get('list')[0], indent=4))
 
 get_info()
